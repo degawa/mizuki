@@ -40,7 +40,7 @@ contains
         class(axis) , intent(inout) :: this
             !! 当該実体仮引数
         real(real64), intent(in)    :: coord_vals(2)
-            !! 軸の最小値と最大値 `[min, max]`の順に格納
+            !! 軸の最小値と最大値<br> `[min, max]`の順に格納
         !&>
 
         !|@todo
@@ -60,7 +60,7 @@ contains
             !! 当該実体仮引数
 
         real(real64) :: coord_vals(2)
-            !! 軸の最小値と最大値 `[min, max]`の順に格納
+            !! 軸の最小値と最大値<br> `[min, max]`の順に格納
 
         coord_vals(min_coord) = this%min
         coord_vals(max_coord) = this%max
