@@ -8,6 +8,31 @@ set(TEST_MOD_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/mod/${COMPILER_ID})
 message("test module output dir: ${CMAKE_CURRENT_BINARY_DIR}/mod/${COMPILER_ID}")
 message("")
 
+# assertモジュールの追加
+add_library(assert STATIC)
+target_sources(assert
+    PRIVATE
+    assert/src/assert.f90
+    assert/src/common/checkTrue.f90
+    assert/src/common/optval.f90
+    assert/src/common/setTolerance.f90
+    assert/src/common/status.f90
+    assert/src/common/stopOnFailure.f90
+    assert/src/equal/assertEqual.f90
+    assert/src/equal/expectEqual.f90
+    assert/src/equal/compareArrayValues.f90
+    assert/src/equal/outputOnFailure.f90
+    assert/src/sameShape/assertSameShape.f90
+    assert/src/sameShape/expectSameShape.f90
+    assert/src/sameShape/compareArrayShape.f90
+    assert/src/logical/expectLogical.f90
+    assert/src/logical/assertLogical.f90
+)
+
+set_target_properties(assert
+    PROPERTIES
+    Fortran_MODULE_DIRECTORY ${TEST_MOD_OUTPUT_DIR}
+)
 
 # テストを登録するマクロ
 function(ADDTEST_LIB name)
@@ -24,6 +49,7 @@ function(ADDTEST_LIB name)
     )
     target_link_libraries(test_${name}
         PRIVATE
+        assert
         stdlib
     )
 
