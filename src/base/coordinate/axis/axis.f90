@@ -12,9 +12,9 @@ module coordinate_axis
     end enum
 
     type, public :: axis
-        real(real64), private :: min
+        real(real64), private :: min = 0d0
             !! 軸の最小値
-        real(real64), private :: max
+        real(real64), private :: max = 0d0
             !! 軸の最大値
     contains
         procedure, public, pass :: set_coord_values
