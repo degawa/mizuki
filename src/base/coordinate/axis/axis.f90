@@ -29,9 +29,42 @@ module coordinate_axis
             !! 軸の最大値を設定する
         procedure, public, pass :: get_maximum_coord_value
             !! 軸の最大値を取得する
+        procedure, public, pass :: assign_array
+            !! 軸の最小値と最大値を持った配列を代入する
+        procedure, public, pass :: assign_axis
+            !! `axis`型の変数の値をコピーする
+        generic :: assignment(=) => assign_array, assign_axis
     end type axis
 
 contains
+
+    !| 軸の最小値と最大値を持った配列を代入する．
+    subroutine assign_array(this, ref_array)
+        implicit none
+        !&<
+        class(axis) , intent(inout) :: this
+            !! 当該実体仮引数
+        real(real64), intent(in)    :: ref_array(2)
+            !! 軸の最小値と最大値<br> `[min, max]`の順に格納
+        !&>
+
+        this%min = ref_array(min_coord)
+        this%max = ref_array(max_coord)
+    end subroutine assign_array
+
+    !| `axis`型の変数の値をコピーする．
+    subroutine assign_axis(this, ref_axis)
+        implicit none
+        !&<
+        class(axis), intent(inout) :: this
+            !! 当該実体仮引数
+        type(axis), intent(in) :: ref_axis
+            !! コピー元の`axis`型変数
+        !&>
+
+        this%min = ref_axis%min
+        this%max = ref_axis%max
+    end subroutine assign_axis
 
     !| 軸の最小値と最大値を設定する．
     subroutine set_coord_values(this, coord_vals)
@@ -48,8 +81,7 @@ contains
         ! の場合のテストの作成
         !@endtodo
 
-        this%min = coord_vals(min_coord)
-        this%max = coord_vals(max_coord)
+        this = coord_vals
     end subroutine set_coord_values
 
     !| 軸の最小値と最大値を取得する．
