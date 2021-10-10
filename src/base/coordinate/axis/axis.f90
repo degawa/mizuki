@@ -8,7 +8,9 @@ module coordinate_axis
 
     enum, bind(c)
         enumerator :: min_coord = 1
+            !! 軸の最小値を参照するための配列添字
         enumerator :: max_coord
+            !! 軸の最大値を参照するための配列添字
     end enum
 
     type, public :: axis
