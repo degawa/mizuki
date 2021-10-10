@@ -18,11 +18,17 @@ module coordinate_axis
             !! 軸の最大値
     contains
         procedure, public, pass :: set_coord_values
+            !! 軸の最小値と最大値を設定する
         procedure, public, pass :: get_coord_values
+            !! 軸の最小値と最大値を取得する
         procedure, public, pass :: set_minimum_coord_value
+            !! 軸の最小値を取得する
         procedure, public, pass :: get_minimum_coord_value
+            !! 軸の最小値を取得する
         procedure, public, pass :: set_maximum_coord_value
+            !! 軸の最大値を設定する
         procedure, public, pass :: get_maximum_coord_value
+            !! 軸の最大値を取得する
     end type axis
 
 contains
