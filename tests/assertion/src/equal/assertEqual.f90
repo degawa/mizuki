@@ -2,6 +2,7 @@
 module assertion_equal_assert
     use, intrinsic :: iso_fortran_env
     use :: assertion_equal_expect
+    use :: assertion_common_stopOnFailure
     implicit none
     private
     public :: assert_equal
