@@ -30,3 +30,40 @@
 *.exe
 *.out
 *.app
+
+# results
+.ipynb_checkpoints
+*.avi
+*.pptx
+*.zip
+*.bmp
+*.csv
+*.vts
+*.vtr
+
+# settings and documents
+*.ini
+*.htm
+*.ipynb
+*.bat
+*.txt
+!CMakeLists.txt
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.fortls
+*.lnk
+
+# created files and directories
+*.ilk
+*.pdb
+build*/
+
+# directories
+bin/
+include/
+lib/
+api-doc/
+
+# external projects
+external/
