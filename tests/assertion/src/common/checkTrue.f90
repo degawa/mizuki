@@ -1,7 +1,7 @@
 !| テスト結果の成否を調べる手続を定義したモジュール
 !
-module assert_common_checkTrue
-    use :: assert_common_status
+module assertion_common_checkTrue
+    use :: assertion_common_status
     implicit none
     private
     public :: check_true
@@ -30,4 +30,4 @@ contains
             if (present(stat)) stat = failure
         end if
     end subroutine check_true
-end module assert_common_checkTrue
+end module assertion_common_checkTrue

@@ -1,9 +1,9 @@
 !| 論理型の値を検査し，
 !失敗したときにプログラムを停止する手続を定義したモジュール．
-module assertLogical
+module assertion_logical_assert
     use, intrinsic :: iso_fortran_env
-    use :: expectLogical
-    use :: assert_common_stopOnFailure
+    use :: assertion_logical_expect
+    use :: assertion_common_stopOnFailure
     implicit none
     private
     public :: assert_true
@@ -41,4 +41,4 @@ contains
         call expect_false(.not. l, test_name, stat)
         call stop_on_failure(stat)
     end subroutine assert_false
-end module assertLogical
+end module assertion_logical_assert

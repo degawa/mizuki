@@ -1,5 +1,5 @@
 !| 配列の形状を比較する手続を定義したモジュール．
-module expect_sameShape_compareArrayShape
+module assertion_sameShape_compareArrayShape
     use, intrinsic :: iso_fortran_env
     implicit none
     private
@@ -129,4 +129,4 @@ contains
 
         are_same = all(shape(array1) == shape(array2))
     end function compare_shape_1d_char
-end module expect_sameShape_compareArrayShape
+end module assertion_sameShape_compareArrayShape

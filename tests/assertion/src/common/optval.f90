@@ -1,7 +1,7 @@
 !| `optional`な引数の利便性を改善する`optval`を定義したモジュール．<br>
 ! `optional`な引数と標準値を渡し，`optional`な引数が渡されていれば
 ! その値を，渡されていなければ標準値を返す
-module assert_common_optval
+module assertion_common_optval
     use, intrinsic :: iso_fortran_env
     implicit none
     private
@@ -59,4 +59,4 @@ contains
             y = x
         end if
     end function optval_real64
-end module assert_common_optval
+end module assertion_common_optval

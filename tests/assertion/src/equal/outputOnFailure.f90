@@ -1,5 +1,5 @@
 !| テストが失敗した際に，画面に値を表示する手続を定義したモジュール．
-module assertEqual_outputOnFailure
+module assertion_equal_outputOnFailure
     use, intrinsic :: iso_fortran_env
     implicit none
     private
@@ -149,4 +149,4 @@ contains
         print '(4X,A,g0)', "Maximum Absolute Difference: ", maxval(abs(expected - actual))
         print '(4X,A,g0)', "Minumum Absolute Difference: ", minval(abs(expected - actual))
     end subroutine output_3dReal64_3dReal64
-end module assertEqual_outputOnFailure
+end module assertion_equal_outputOnFailure

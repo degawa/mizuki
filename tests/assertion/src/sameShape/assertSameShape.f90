@@ -1,9 +1,9 @@
 !| 配列の形状が同じかを検査し，
 ! 失敗した際にプログラムを停止する手続を定義したモジュール．
-module assertSameShape
+module assertion_sameShape_assert
     use, intrinsic :: iso_fortran_env
-    use :: expectSameShape, only:expect_same_shape
-    use :: assert_common_stopOnFailure
+    use :: assertion_sameShape_expect, only:expect_same_shape
+    use :: assertion_common_stopOnFailure
     implicit none
     private
     public :: assert_same_shape
@@ -212,4 +212,4 @@ contains
         call expect_same_shape(actual, expected, test_name, stat)
         call stop_on_failure(stat)
     end subroutine assert_sameshape_1d_charArray
-end module assertSameShape
+end module assertion_sameShape_assert

@@ -1,10 +1,10 @@
 !| 変数あるいは配列の値が等しいかを検査する手続を定義したモジュール．
-module expectEqual
+module assertion_equal_expect
     use, intrinsic :: iso_fortran_env
-    use :: assert_common_checkTrue
-    use :: assert_common_optval
-    use :: assert_common_status
-    use :: assertEqual_outputOnFailure
+    use :: assertion_common_checkTrue
+    use :: assertion_common_optval
+    use :: assertion_common_status
+    use :: assertion_equal_outputOnFailure
     implicit none
     private
     public :: expect_equal
@@ -134,7 +134,7 @@ contains
     ! 値が異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する．
     subroutine expect_equal_1dInt32_1dInt32(actual, expected, test_name, stat)
-        use :: expectSameShape
+        use :: assertion_sameShape_expect
         use :: assert_equal_compareArrayValues
         implicit none
 
@@ -163,7 +163,7 @@ contains
     ! 値が異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する．
     subroutine expect_equal_2dInt32_2dInt32(actual, expected, test_name, stat)
-        use :: expectSameShape
+        use :: assertion_sameShape_expect
         use :: assert_equal_compareArrayValues
         implicit none
 
@@ -192,7 +192,7 @@ contains
     ! 値が異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する．
     subroutine expect_equal_3dInt32_3dInt32(actual, expected, test_name, stat)
-        use :: expectSameShape
+        use :: assertion_sameShape_expect
         use :: assert_equal_compareArrayValues
         implicit none
 
@@ -226,7 +226,7 @@ contains
     ! テストが失敗したときか，`verbose`が`.true.`に
     ! 設定されている場合に，詳細を表示する
     subroutine expect_approxequal_real32_real32(actual, expected, test_name, stat, tolerance, verbose)
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
 
         real(real32), intent(in) :: actual
@@ -257,7 +257,7 @@ contains
     ! テストが失敗したときか，`verbose`が`.true.`に
     ! 設定されている場合に，詳細を表示する
     subroutine expect_approxequal_real64_real64(actual, expected, test_name, stat, tolerance, verbose)
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
 
         real(real64), intent(in) :: actual
@@ -288,9 +288,9 @@ contains
     ! テストが失敗したときか，`verbose`が`.true.`に
     ! 設定されている場合に，詳細を表示する
     subroutine expect_approxequal_1dReal32_1dReal32(actual, expected, test_name, stat, tolerance, verbose)
-        use :: expectSameShape
+        use :: assertion_sameShape_expect
         use :: assert_equal_compareArrayValues
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
 
         real(real32), intent(in) :: actual(:)
@@ -329,9 +329,9 @@ contains
     ! テストが失敗したときか，`verbose`が`.true.`に
     ! 設定されている場合に，詳細を表示する
     subroutine expect_approxequal_2dReal32_2dReal32(actual, expected, test_name, stat, tolerance, verbose)
-        use :: expectSameShape
+        use :: assertion_sameShape_expect
         use :: assert_equal_compareArrayValues
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
 
         real(real32), intent(in) :: actual(:, :)
@@ -370,9 +370,9 @@ contains
     ! テストが失敗したときか，`verbose`が`.true.`に
     ! 設定されている場合に，詳細を表示する
     subroutine expect_approxequal_3dReal32_3dReal32(actual, expected, test_name, stat, tolerance, verbose)
-        use :: expectSameShape
+        use :: assertion_sameShape_expect
         use :: assert_equal_compareArrayValues
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
 
         real(real32), intent(in) :: actual(:, :, :)
@@ -411,9 +411,9 @@ contains
     ! テストが失敗したときか，`verbose`が`.true.`に
     ! 設定されている場合に，詳細を表示する
     subroutine expect_approxequal_1dReal64_1dReal64(actual, expected, test_name, stat, tolerance, verbose)
-        use :: expectSameShape
+        use :: assertion_sameShape_expect
         use :: assert_equal_compareArrayValues
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
 
         real(real64), intent(in) :: actual(:)
@@ -452,9 +452,9 @@ contains
     ! テストが失敗したときか，`verbose`が`.true.`に
     ! 設定されている場合に，詳細を表示する
     subroutine expect_approxequal_2dReal64_2dReal64(actual, expected, test_name, stat, tolerance, verbose)
-        use :: expectSameShape
+        use :: assertion_sameShape_expect
         use :: assert_equal_compareArrayValues
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
 
         real(real64), intent(in) :: actual(:, :)
@@ -493,9 +493,9 @@ contains
     ! テストが失敗したときか，`verbose`が`.true.`に
     ! 設定されている場合に，詳細を表示する
     subroutine expect_approxequal_3dReal64_3dReal64(actual, expected, test_name, stat, tolerance, verbose)
-        use :: expectSameShape
+        use :: assertion_sameShape_expect
         use :: assert_equal_compareArrayValues
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
 
         real(real64), intent(in) :: actual(:, :, :)
@@ -530,7 +530,7 @@ contains
     ! 値が異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する．
     subroutine expect_equiv_logical_logical(actual, expected, test_name, stat)
-        use :: assert_common_checkTrue
+        use :: assertion_common_checkTrue
         implicit none
 
         logical, intent(in) :: actual
@@ -548,7 +548,7 @@ contains
     ! 値が異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する．
     subroutine expect_equal_str_str(actual, expected, test_name, stat)
-        use :: assert_common_checkTrue
+        use :: assertion_common_checkTrue
         implicit none
 
         character(*), intent(in) :: actual
@@ -573,7 +573,7 @@ contains
     ! 値が異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する．
     subroutine expect_equal_charArray_charArray(actual, expected, test_name, stat)
-        use :: expectSameShape
+        use :: assertion_sameShape_expect
         use :: assert_equal_compareArrayValues
         implicit none
 
@@ -604,4 +604,4 @@ contains
 
         is_output_on_failure = (test_stat .eqv. failure) .or. optval(verbose, .false.)
     end function is_output_on_failure
-end module expectEqual
+end module assertion_equal_expect

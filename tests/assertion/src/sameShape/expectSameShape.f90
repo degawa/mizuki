@@ -1,7 +1,7 @@
 !| 配列の形状が同じかを検査する手続を定義したモジュール．
-module expectSameShape
+module assertion_sameShape_expect
     use, intrinsic :: iso_fortran_env
-    use :: assert_common_checkTrue
+    use :: assertion_common_checkTrue
     implicit none
     private
     public :: expect_same_shape
@@ -27,7 +27,7 @@ contains
     ! サイズが異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する
     subroutine expect_sameshape_1d_int32(actual, expected, test_name, stat)
-        use :: expect_sameShape_compareArrayShape
+        use :: assertion_sameShape_compareArrayShape
         implicit none
 
         integer(int32), intent(in) :: actual(:)
@@ -44,7 +44,7 @@ contains
     ! サイズが異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する
     subroutine expect_sameshape_2d_int32(actual, expected, test_name, stat)
-        use :: expect_sameShape_compareArrayShape
+        use :: assertion_sameShape_compareArrayShape
         implicit none
 
         integer(int32), intent(in) :: actual(:, :)
@@ -61,7 +61,7 @@ contains
     ! サイズが異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する
     subroutine expect_sameshape_3d_int32(actual, expected, test_name, stat)
-        use :: expect_sameShape_compareArrayShape
+        use :: assertion_sameShape_compareArrayShape
         implicit none
 
         integer(int32), intent(in) :: actual(:, :, :)
@@ -78,7 +78,7 @@ contains
     ! サイズが異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する
     subroutine expect_sameshape_1d_real32(actual, expected, test_name, stat)
-        use :: expect_sameShape_compareArrayShape
+        use :: assertion_sameShape_compareArrayShape
         implicit none
 
         real(real32), intent(in) :: actual(:)
@@ -95,7 +95,7 @@ contains
     ! サイズが異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する
     subroutine expect_sameshape_2d_real32(actual, expected, test_name, stat)
-        use :: expect_sameShape_compareArrayShape
+        use :: assertion_sameShape_compareArrayShape
         implicit none
 
         real(real32), intent(in) :: actual(:, :)
@@ -112,7 +112,7 @@ contains
     ! サイズが異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する
     subroutine expect_sameshape_3d_real32(actual, expected, test_name, stat)
-        use :: expect_sameShape_compareArrayShape
+        use :: assertion_sameShape_compareArrayShape
         implicit none
 
         real(real32), intent(in) :: actual(:, :, :)
@@ -129,7 +129,7 @@ contains
     ! サイズが異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する
     subroutine expect_sameshape_1d_real64(actual, expected, test_name, stat)
-        use :: expect_sameShape_compareArrayShape
+        use :: assertion_sameShape_compareArrayShape
         implicit none
 
         real(real64), intent(in) :: actual(:)
@@ -146,7 +146,7 @@ contains
     ! サイズが異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する
     subroutine expect_sameshape_2d_real64(actual, expected, test_name, stat)
-        use :: expect_sameShape_compareArrayShape
+        use :: assertion_sameShape_compareArrayShape
         implicit none
 
         real(real64), intent(in) :: actual(:, :)
@@ -163,7 +163,7 @@ contains
     ! サイズが異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する
     subroutine expect_sameshape_3d_real64(actual, expected, test_name, stat)
-        use :: expect_sameShape_compareArrayShape
+        use :: assertion_sameShape_compareArrayShape
         implicit none
 
         real(real64), intent(in) :: actual(:, :, :)
@@ -180,7 +180,7 @@ contains
     ! サイズが異なっていれば，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`failure`を格納する
     subroutine expect_sameshape_1d_charArray(actual, expected, test_name, stat)
-        use :: expect_sameShape_compareArrayShape
+        use :: assertion_sameShape_compareArrayShape
         implicit none
 
         character, intent(in) :: actual(:)
@@ -190,4 +190,4 @@ contains
 
         call check_true(are_same_shape(actual, expected), test_name, stat)
     end subroutine expect_sameshape_1d_charArray
-end module expectSameShape
+end module assertion_sameShape_expect

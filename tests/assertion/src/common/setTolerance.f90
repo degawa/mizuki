@@ -8,9 +8,9 @@
 ! 外部ライブラリに依存しない事が必要
 !@endnote
 !
-module assert_common_setTolerance
+module assertion_common_setTolerance
     use, intrinsic :: iso_fortran_env
-    use :: assert_common_optval
+    use :: assertion_common_optval
     implicit none
     private
     public :: set_tolerance
@@ -58,4 +58,4 @@ contains
 
         tol = optval(tol64, default)
     end function set_tolerance_real64
-end module assert_common_setTolerance
+end module assertion_common_setTolerance

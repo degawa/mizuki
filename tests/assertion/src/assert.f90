@@ -1,9 +1,9 @@
 !| テストのassertionに用いる手続を定義したモジュール．
-module assert
+module assertion
     use, intrinsic :: iso_fortran_env
-    use :: expectEqual
-    use :: expectSameShape
-    use :: expectLogical
+    use :: assertion_equal_expect
+    use :: assertion_sameShape_expect
+    use :: assertion_logical_expect
     implicit none
     private
     public :: expect_equal
@@ -61,4 +61,4 @@ contains
 
         num_elem = count(array .eqv. value)
     end function number_of_logical_elements
-end module assert
+end module assertion

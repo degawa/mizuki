@@ -53,7 +53,7 @@ contains
     ! 許容誤差は`tolerance`で指定し，指定されない時は
     ! マシンイプシロンを使用する
     pure function compare_all_values_1d_real32(array1, array2, tolerance) result(are_same)
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
         real(real32), intent(in) :: array1(:)
         real(real32), intent(in) :: array2(:)
@@ -70,7 +70,7 @@ contains
     ! 許容誤差は`tolerance`で指定し，指定されない時は
     ! マシンイプシロンを使用する
     pure function compare_all_values_2d_real32(array1, array2, tolerance) result(are_same)
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
         real(real32), intent(in) :: array1(:, :)
         real(real32), intent(in) :: array2(:, :)
@@ -87,7 +87,7 @@ contains
     ! 許容誤差は`tolerance`で指定し，指定されない時は
     ! マシンイプシロンを使用する
     pure function compare_all_values_3d_real32(array1, array2, tolerance) result(are_same)
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
         real(real32), intent(in) :: array1(:, :, :)
         real(real32), intent(in) :: array2(:, :, :)
@@ -104,7 +104,7 @@ contains
     ! 許容誤差は`tolerance`で指定し，指定されない時は
     ! マシンイプシロンを使用する
     pure function compare_all_values_1d_real64(array1, array2, tolerance) result(are_same)
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
         real(real64), intent(in) :: array1(:)
         real(real64), intent(in) :: array2(:)
@@ -121,7 +121,7 @@ contains
     ! 許容誤差は`tolerance`で指定し，指定されない時は
     ! マシンイプシロンを使用する
     pure function compare_all_values_2d_real64(array1, array2, tolerance) result(are_same)
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
         real(real64), intent(in) :: array1(:, :)
         real(real64), intent(in) :: array2(:, :)
@@ -138,7 +138,7 @@ contains
     ! 許容誤差は`tolerance`で指定し，指定されない時は
     ! マシンイプシロンを使用する
     pure function compare_all_values_3d_real64(array1, array2, tolerance) result(are_same)
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
         real(real64), intent(in) :: array1(:, :, :)
         real(real64), intent(in) :: array2(:, :, :)
@@ -153,7 +153,7 @@ contains
 
     !| ランク1の文字型配列同士の値を比較する
     pure function compare_all_values_1d_charaArray(array1, array2) result(are_same)
-        use :: assert_common_setTolerance
+        use :: assertion_common_setTolerance
         implicit none
         character, intent(in) :: array1(:)
         character, intent(in) :: array2(:)

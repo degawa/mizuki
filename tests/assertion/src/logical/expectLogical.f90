@@ -1,7 +1,7 @@
 !| 論理型の値を検査する手続を定義したモジュール．
-module expectLogical
+module assertion_logical_expect
     use, intrinsic :: iso_fortran_env
-    use :: assert_common_checkTrue
+    use :: assertion_common_checkTrue
     implicit none
     private
     public :: expect_true
@@ -35,4 +35,4 @@ contains
 
         call check_true(.not. l, test_name, stat)
     end subroutine expect_false
-end module expectLogical
+end module assertion_logical_expect
