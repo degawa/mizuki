@@ -70,6 +70,7 @@ contains
         this%max = ref_axis%max
     end subroutine assign_axis
 
+    !------------------------------------------------------------------!
     !| 軸の最小値と最大値を設定する．
     subroutine set_coord_values(this, coord_vals)
         implicit none
@@ -102,6 +103,7 @@ contains
         coord_vals(max_coord) = this%max
     end function get_coord_values
 
+    !------------------------------------------------------------------!
     !| 軸の最小値を設定する．
     subroutine set_minimum_coord_value(this, min_coord_val)
         implicit none
@@ -127,6 +129,7 @@ contains
         min_coord_val = this%min
     end function get_minimum_coord_value
 
+    !------------------------------------------------------------------!
     !| 軸の最大値を設定する．
     subroutine set_maximum_coord_value(this, min_coord_val)
         implicit none
@@ -152,6 +155,7 @@ contains
         max_coord_val = this%max
     end function get_maximum_coord_value
 
+    !------------------------------------------------------------------!
     !| 軸の長さを取得する．
     function get_length(this) result(length)
         implicit none
