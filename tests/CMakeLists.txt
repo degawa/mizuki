@@ -12,7 +12,7 @@ message("")
 add_library(assert STATIC)
 target_sources(assert
     PRIVATE
-    assertion/src/assert.f90
+    assertion/src/assertion.f90
     assertion/src/common/checkTrue.f90
     assertion/src/common/optval.f90
     assertion/src/common/setTolerance.f90
