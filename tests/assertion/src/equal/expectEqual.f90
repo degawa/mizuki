@@ -590,6 +590,7 @@ contains
             return
         end if
 
+        test_stat = failure
         if (are_values_of_all_elements_equal(actual, expected)) test_stat = success
 
         call check_true(test_stat, test_name, stat)
