@@ -29,6 +29,8 @@ module coordinate_axis
             !! 軸の最大値を設定する
         procedure, public, pass :: get_maximum_coord_value
             !! 軸の最大値を取得する
+        procedure, public, pass :: get_length
+            !! 軸の長さを取得する
         procedure, public, pass :: assign_array
             !! 軸の最小値と最大値を持った配列を代入する
         procedure, public, pass :: assign_axis
@@ -147,4 +149,16 @@ contains
 
         max_coord_val = this%max
     end function get_maximum_coord_value
+
+    !| 軸の長さを取得する．
+    function get_length(this) result(length)
+        implicit none
+
+        class(axis), intent(in) :: this
+            !! 当該実体仮引数
+
+        real(real64) :: length
+
+        length = this%max - this%min
+    end function get_length
 end module coordinate_axis
