@@ -1,0 +1,14 @@
+{
+    // これはプロジェクトごとの設定を記述するファイルです．
+    // 個人の設定は追加しないでください．
+    // 個人の設定を個別に制御したい場合は，code-workspaceファイルを作成し，そこに設定を記述してください．
+    "editor.formatOnSave": true,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "editor.trimAutoWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "modernFortranFormatter.fprettifyArgs": "--indent 4 --line-length 256 --enable-decl --strip-comment --case 1 1 1 1",
+    "fortran-ls.lowercaseIntrinsics": true,
+    "fortran.preferredCase": "lowercase",
+    "extensions.ignoreRecommendations": false
+}

@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "krvajalm.linter-gfortran",
+        "hansec.fortran-ls",
+        "yukiuuh.vscode-modern-fortran-formatter",
+    ]
+}
