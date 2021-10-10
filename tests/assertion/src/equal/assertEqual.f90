@@ -1,5 +1,5 @@
 !| 変数あるいは配列の値が等しいかを検査する手続を定義したモジュール．
-module assertion_equal_assertEqual
+module assertion_equal_assert
     use, intrinsic :: iso_fortran_env
     use :: assertion_equal_expect
     implicit none
@@ -467,4 +467,4 @@ contains
         call expect_equal(actual, expected, test_name, test_stat)
         call stop_on_failure(test_stat)
     end subroutine assert_equal_charArray_charArray
-end module assertion_equal_assertEqual
+end module assertion_equal_assert
