@@ -33,3 +33,4 @@ function(ADDTEST_LIB name)
             )
 endfunction(ADDTEST_LIB)
 
+add_subdirectory(FortranStdlib)
