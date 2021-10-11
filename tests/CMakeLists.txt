@@ -8,6 +8,21 @@ set(TEST_MOD_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/mod/${COMPILER_ID})
 message("test module output dir: ${CMAKE_CURRENT_BINARY_DIR}/mod/${COMPILER_ID}")
 message("")
 
+# ビルドしたMIZUKIライブラリの読み込み設定
+## ライブラリ名の設定
+if(CMAKE_Fortran_COMPILER_ID MATCHES GNU OR Fortran_COMPILER_NAME MATCHES "gfortran*")
+    set(MIZUKI_LIBNAME libmizuki.a)
+elseif(CMAKE_Fortran_COMPILER_ID MATCHES Intel OR Fortran_COMPILER_NAME MATCHES "ifort*")
+    set(MIZUKI_LIBNAME mizuki.lib)
+endif()
+
+## ライブラリの読み込み
+add_library(mizuki_lib STATIC IMPORTED GLOBAL)
+set_target_properties(mizuki_lib
+    PROPERTIES
+    IMPORTED_LOCATION ${LIB_OUTPUT_DIR}/${MIZUKI_LIBNAME}
+)
+
 # assertモジュールの追加
 add_library(assert STATIC)
 target_sources(assert
@@ -45,10 +60,13 @@ function(ADDTEST_LIB name)
         LINK_FLAGS "${EXTERNAL_LIB_LINKER_FLAGS}"
     )
     target_include_directories(test_${name}
-        PUBLIC ${INCLUDE_DIR}
+        PUBLIC
+        ${INCLUDE_DIR}
+        ${MOD_OUTPUT_DIR}
     )
     target_link_libraries(test_${name}
         PRIVATE
+        mizuki_lib
         assert
         stdlib
     )
@@ -61,3 +79,4 @@ endfunction(ADDTEST_LIB)
 
 add_subdirectory(assertion)
 add_subdirectory(FortranStdlib)
+add_subdirectory(axis)
