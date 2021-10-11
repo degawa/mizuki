@@ -2,14 +2,21 @@
 module assertion
     use, intrinsic :: iso_fortran_env
     use :: assertion_equal_expect
+    use :: assertion_equal_assert
     use :: assertion_sameShape_expect
+    use :: assertion_sameShape_assert
     use :: assertion_logical_expect
+    use :: assertion_logical_assert
     implicit none
     private
     public :: expect_equal
     public :: expect_same_shape
     public :: expect_true
     public :: expect_false
+    public :: assert_equal
+    public :: assert_same_shape
+    public :: assert_true
+    public :: assert_false
     public :: show_sammary
 
 contains
