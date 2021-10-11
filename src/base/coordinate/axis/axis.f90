@@ -4,12 +4,12 @@ module coordinate_axis
     use, intrinsic :: iso_c_binding
     implicit none
     private
-    public :: min_coord, max_coord
+    public :: axis_min_idx, axis_max_idx
 
     enum, bind(c)
-        enumerator :: min_coord = 1
+        enumerator :: axis_min_idx = 1
             !! 軸の最小値を参照するための配列添字
-        enumerator :: max_coord
+        enumerator :: axis_max_idx
             !! 軸の最大値を参照するための配列添字
     end enum
 
@@ -52,8 +52,8 @@ contains
             !! 軸の最小値と最大値<br> `[min, max]`の順に格納
         !&>
 
-        this%min = ref_array(min_coord)
-        this%max = ref_array(max_coord)
+        this%min = ref_array(axis_min_idx)
+        this%max = ref_array(axis_max_idx)
     end subroutine assign_array
 
     !| `axis`型の変数の値をコピーする．
@@ -99,8 +99,8 @@ contains
         real(real64) :: coord_vals(2)
             !! 軸の最小値と最大値<br> `[min, max]`の順に格納
 
-        coord_vals(min_coord) = this%min
-        coord_vals(max_coord) = this%max
+        coord_vals(axis_min_idx) = this%min
+        coord_vals(axis_max_idx) = this%max
     end function get_coord_values
 
     !------------------------------------------------------------------!
