@@ -1,5 +1,5 @@
 # 出力ファイル名
-set(BINNAME ${PROJECT_NAME})
+set(LIBNAME ${PROJECT_NAME})
 
 ## 既存の（あるいはビルド＆コピーした）fortran-stdlibライブラリをプロジェクトに追加
 add_library(stdlib STATIC IMPORTED GLOBAL)
@@ -8,30 +8,47 @@ set_target_properties(stdlib
     IMPORTED_LOCATION ${LIB_DIR}/${STDLIB_LIBNAME}
 )
 
-# TopCAST-extライブラリ用ソースファイル
+# MIZUKIライブラリ用ソースファイル
 FILE(GLOB_RECURSE BASE_MODULE_SRC "base/*.f90")
 
-add_executable(${BINNAME})
-target_sources(${BINNAME}
+add_library(${LIBNAME} STATIC)
+target_sources(${LIBNAME}
     PUBLIC
-    main.f90
     ${BASE_MODULE_SRC}
 )
 
-target_link_libraries(${BINNAME}
+target_link_libraries(${LIBNAME}
     PRIVATE
     stdlib
 )
 
-# 実行ファイルのプロパティ
-set_target_properties(${BINNAME}
+# ライブラリの出力ディレクトリ設定
+set_target_properties(${LIBNAME}
     PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${LIB_OUTPUT_DIR}
     LIBRARY_OUTPUT_DIRECTORY ${LIB_OUTPUT_DIR}
     Fortran_MODULE_DIRECTORY ${MOD_OUTPUT_DIR}
 )
 
-target_include_directories(${BINNAME}
+target_include_directories(${LIBNAME}
     PUBLIC
     ${INCLUDE_DIR}
+)
+
+# 実行ファイルのビルド設定
+set(BINNAME "${PROJECT_NAME}_")
+
+add_executable(${BINNAME}
+    main.f90
+)
+
+target_include_directories(${BINNAME}
+    PRIVATE
+    ${INCLUDE_DIR}
+    ${MOD_OUTPUT_DIR}
+)
+target_link_libraries(${BINNAME}
+    PRIVATE
+    ${LIBNAME}
+    stdlib
 )
