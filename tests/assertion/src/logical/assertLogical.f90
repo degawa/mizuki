@@ -40,7 +40,7 @@ contains
 
         logical :: stat
 
-        call expect_false(.not. l, test_name, stat)
+        call expect_false(l, test_name, stat)
         call stop_on_failure(stat)
     end subroutine assert_false
 end module assertion_logical_assert
