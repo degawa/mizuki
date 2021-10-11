@@ -16,11 +16,12 @@ contains
     ! `.true.`でなければ，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`.false.`を格納し，
     ! プログラムを停止する
-    subroutine assert_true(l, test_name, stat)
+    subroutine assert_true(l, test_name)
         implicit none
         logical, intent(in) :: l
         character(*), intent(in) :: test_name
-        logical, intent(out) :: stat
+
+        logical :: stat
 
         call expect_true(l, test_name, stat)
         call stop_on_failure(stat)
@@ -32,11 +33,12 @@ contains
     ! `.false.`でなければ，`FAILED テスト名`というメッセージを表示し，
     ! `stat`が渡されていれば`stat`に`.false.`を格納し，
     ! プログラムを停止する
-    subroutine assert_false(l, test_name, stat)
+    subroutine assert_false(l, test_name)
         implicit none
         logical, intent(in) :: l
         character(*), intent(in) :: test_name
-        logical, intent(out) :: stat
+
+        logical :: stat
 
         call expect_false(.not. l, test_name, stat)
         call stop_on_failure(stat)
