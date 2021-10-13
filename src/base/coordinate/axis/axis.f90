@@ -19,24 +19,30 @@ module coordinate_axis
         real(real64), private :: max = 0d0
             !! 軸の最大値
     contains
+        procedure, public, pass :: construct_by_values
+            !! 値に基づいて変数を生成
+        procedure, public, pass :: construct_by_array
+            !! 配列に基づいて変数を生成
+        generic :: construct => construct_by_values, construct_by_array
+
         procedure, public, pass :: set_coord_values
-            !! 軸の最小値と最大値を設定する
+            !! 軸の最小値と最大値を設定
         procedure, public, pass :: get_coord_values
-            !! 軸の最小値と最大値を取得する
+            !! 軸の最小値と最大値を取得
         procedure, public, pass :: set_minimum_coord_value
-            !! 軸の最小値を取得する
+            !! 軸の最小値を取得
         procedure, public, pass :: get_minimum_coord_value
-            !! 軸の最小値を取得する
+            !! 軸の最小値を取得
         procedure, public, pass :: set_maximum_coord_value
-            !! 軸の最大値を設定する
+            !! 軸の最大値を設定
         procedure, public, pass :: get_maximum_coord_value
-            !! 軸の最大値を取得する
+            !! 軸の最大値を取得
         procedure, public, pass :: get_length
-            !! 軸の長さを取得する
+            !! 軸の長さを取得
         procedure, public, pass :: assign_array
-            !! 軸の最小値と最大値を持った配列を代入する
+            !! 軸の最小値と最大値を持った配列を代入
         procedure, public, pass :: assign_axis
-            !! `axis`型の変数の値をコピーする
+            !! `axis`型の変数の値をコピー
         generic :: assignment(=) => assign_array, assign_axis
     end type axis
 
@@ -70,6 +76,30 @@ contains
         this%max = ref_axis%max
     end subroutine assign_axis
 
+    !------------------------------------------------------------------!
+    ! コンストラクタ
+    ! 動作は`set_coord_values`と同じであるが，他の型と
+    ! インタフェースを統一するために定義
+
+    !| 引数で指定した軸の最小値，最大値に基づいてaxis型変数を生成する．
+    subroutine construct_by_values(this, min_coord_val, max_coord_val)
+        implicit none
+        class(axis), intent(inout) :: this
+        real(real64), intent(in) :: min_coord_val
+        real(real64), intent(in) :: max_coord_val
+
+        call this%set_coord_values(coord_vals=[min_coord_val, max_coord_val])
+    end subroutine construct_by_values
+
+    !| 引数で指定した，軸の最小値，最大値を持つ配列に基づいて
+    ! axis型変数を生成する．
+    subroutine construct_by_array(this, coord_vals)
+        implicit none
+        class(axis), intent(inout) :: this
+        real(real64), intent(in) :: coord_vals(2)
+
+        call this%set_coord_values(coord_vals=coord_vals)
+    end subroutine construct_by_array
     !------------------------------------------------------------------!
     !| 軸の最小値と最大値を設定する．
     subroutine set_coord_values(this, coord_vals)
