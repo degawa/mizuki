@@ -1,6 +1,7 @@
 program test_axis
     use, intrinsic :: iso_fortran_env
     use :: coordinate_axis
+    use :: coordinate_axis_factory
     use :: assertion
     implicit none
 
@@ -8,6 +9,7 @@ program test_axis
 
     call test_get_coord_values()
     call test_set_coord_values()
+    call test_factory()
 
 contains
     subroutine test_get_coord_values()
@@ -44,4 +46,32 @@ contains
         call assert_equal(coord_val, [-5d0, 5d0], test_name//"set maximum and minimum coord value")
     end subroutine test_set_coord_values
 
+    subroutine test_factory()
+        implicit none
+
+        type(axis) :: an_axis
+        type(axis), allocatable :: axis_allc
+        real(real64) :: coord_val(2)
+
+        call an_axis%set_coord_values([-10d0, 10d0])
+
+        ! factoryをコンストラクタの代わりに使う
+        an_axis = axis_factory(-1d0, 1d0)
+        coord_val(:) = an_axis%get_coord_values()
+        call assert_equal(coord_val, [-1d0, 1d0], test_name//"factory")
+
+        ! allocateのsourceにfactoryの戻り値を指定
+        ! 最小値，最大値を指定
+        allocate (axis_allc, source=axis_factory(-2d0, 2d0))
+        coord_val(:) = axis_allc%get_coord_values()
+        call assert_equal(coord_val, [-2d0, 2d0], test_name//"value-based-factory-sourced allocation")
+        deallocate (axis_allc)
+
+        ! 配列で最小値と最大値を指定
+        allocate (axis_allc, source=axis_factory([-4d0, 4d0]))
+        coord_val(:) = axis_allc%get_coord_values()
+        call assert_equal(coord_val, [-4d0, 4d0], test_name//"array-based-factory-sourced allocation")
+        deallocate (axis_allc)
+
+    end subroutine test_factory
 end program test_axis
