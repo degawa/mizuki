@@ -20,23 +20,23 @@ module coordinate_axis
             !! 軸の最大値
     contains
         procedure, public, pass :: set_coord_values
-            !! 軸の最小値と最大値を設定する
+            !! 軸の最小値と最大値を設定
         procedure, public, pass :: get_coord_values
-            !! 軸の最小値と最大値を取得する
+            !! 軸の最小値と最大値を取得
         procedure, public, pass :: set_minimum_coord_value
-            !! 軸の最小値を取得する
+            !! 軸の最小値を取得
         procedure, public, pass :: get_minimum_coord_value
-            !! 軸の最小値を取得する
+            !! 軸の最小値を取得
         procedure, public, pass :: set_maximum_coord_value
-            !! 軸の最大値を設定する
+            !! 軸の最大値を設定
         procedure, public, pass :: get_maximum_coord_value
-            !! 軸の最大値を取得する
+            !! 軸の最大値を取得
         procedure, public, pass :: get_length
-            !! 軸の長さを取得する
+            !! 軸の長さを取得
         procedure, public, pass :: assign_array
-            !! 軸の最小値と最大値を持った配列を代入する
+            !! 軸の最小値と最大値を持った配列を代入
         procedure, public, pass :: assign_axis
-            !! `axis`型の変数の値をコピーする
+            !! `axis`型の変数の値をコピー
         generic :: assignment(=) => assign_array, assign_axis
     end type axis
 
