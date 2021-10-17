@@ -9,7 +9,7 @@ program test_FortranStdlib
 contains
     subroutine test_global_logger_output()
         implicit none
-        character(*), parameter :: test_name = "logger "
+        character(*), parameter :: test_name = "logger"//" "
 
         block
             integer(int32) :: log_unit

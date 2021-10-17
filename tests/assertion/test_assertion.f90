@@ -36,7 +36,7 @@ contains
     subroutine test_common_status()
         implicit none
 
-        character(*), parameter :: test_name = "assert common status "
+        character(*), parameter :: test_name = "assert common status"//" "
 
         call check(success .eqv. .true., test_name//"success")
 
@@ -48,7 +48,7 @@ contains
         use :: assertion_common_checkTrue
         implicit none
 
-        character(*), parameter :: test_name = "assert common check_true "
+        character(*), parameter :: test_name = "assert common check_true"//" "
         logical :: stat
 
         call check_true(.true., "", stat)
@@ -64,7 +64,7 @@ contains
         implicit none
 
         block
-            character(*), parameter :: test_name = "assert common optval_logical "
+            character(*), parameter :: test_name = "assert common optval_logical"//" "
             call check(optval(.true., .false.) .eqv. .true., test_name//"x=.true.")
             call check(optval(.false., .true.) .eqv. .false., test_name//"x=.false.")
             call check(optval(default=.true.) .eqv. .true., test_name//"default=.true.")
@@ -72,7 +72,7 @@ contains
         end block
 
         block
-            character(*), parameter :: test_name = "assert common optval_real32 "
+            character(*), parameter :: test_name = "assert common optval_real32"//" "
             call check(abs(optval(1e0, 0e0) - 1e0) < epsilon(0e0), test_name//" x not zero")
             call check(abs(optval(0e0, 1e0) - 0e0) < epsilon(0e0), test_name//"x zero")
             call check(abs(optval(default=1e0) - 1e0) < epsilon(0e0), test_name//"default not zero")
@@ -92,14 +92,14 @@ contains
         implicit none
 
         block
-            character(*), parameter :: test_name = "assert common set_tolerance_real32 "
+            character(*), parameter :: test_name = "assert common set_tolerance_real32"//" "
             call check(abs(set_tolerance(1e0, 0e0) - 1e0) < epsilon(0e0), test_name//"x not zero")
             call check(abs(set_tolerance(0e0, 1e0) - 0e0) < epsilon(0e0), test_name//"x zero")
             call check(abs(set_tolerance(default=1e0) - 1e0) < epsilon(0e0), test_name//"default not zero")
         end block
 
         block
-            character(*), parameter :: test_name = "assert common set_tolerance_real64 "
+            character(*), parameter :: test_name = "assert common set_tolerance_real64"//" "
             call check(abs(set_tolerance(1d0, 0d0) - 1d0) < epsilon(0d0), test_name//"x not zero")
             call check(abs(set_tolerance(0d0, 1d0) - 0d0) < epsilon(0d0), test_name//"x zero")
             call check(abs(set_tolerance(default=1d0) - 1d0) < epsilon(0d0), test_name//"default not zero")
@@ -121,7 +121,7 @@ contains
         use :: assertion_sameShape_compareArrayShape, only:are_same_shape
         implicit none
 
-        character(*), parameter :: test_name = "assert same shape are_same_shape"
+        character(*), parameter :: test_name = "assert same shape are_same_shape"//" "
 
         block
             call check(are_same_shape([integer(int32) :: 1, 2, 3], &
@@ -200,7 +200,7 @@ contains
         use :: assertion_sameShape_expect
         use :: assertion_sameShape_assert
         implicit none
-        character(*), parameter :: test_name = "assert same shape expect_same_shape "
+        character(*), parameter :: test_name = "assert same shape expect_same_shape"//" "
 
         block
             logical :: stat
@@ -289,7 +289,7 @@ contains
         use :: assertion_logical_expect
         use :: assertion_logical_assert
         implicit none
-        character(*), parameter :: test_name = "assert logical expect"
+        character(*), parameter :: test_name = "assert logical expect"//" "
 
         block
             logical :: stat
@@ -316,7 +316,7 @@ contains
     subroutine test_equal_compareArrayValue()
         use :: assert_equal_compareArrayValues, only:are_values_of_all_elements_equal
         implicit none
-        character(*), parameter :: test_name = "assert equal compare array value"
+        character(*), parameter :: test_name = "assert equal compare array value"//" "
 
         block
             call check(are_values_of_all_elements_equal([integer(int32) :: 1, 2, 3], &
@@ -395,7 +395,7 @@ contains
         use :: assertion_equal_expect
         use :: assertion_equal_assert
         implicit none
-        character(*), parameter :: test_name = "assert equal expect_equal "
+        character(*), parameter :: test_name = "assert equal expect_equal"//" "
 
         block
 
