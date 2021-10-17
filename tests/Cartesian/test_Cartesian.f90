@@ -1,4 +1,4 @@
-program test_axis
+program test_Cartesian
     use, intrinsic :: iso_fortran_env
     use :: coordinate_axis_factory
     use :: coordinate_Cartesian
@@ -72,4 +72,4 @@ contains
         call assert_equal(coord_syst%get_coordinate(), [-6d0, -5d0, -4d0, -3d0, -2d0, -1d0], &
                           test_name//"Cartesian 3d construct from axis")
     end subroutine test_Cartesian_coordinate_3d
-end program test_axis
+end program test_Cartesian
