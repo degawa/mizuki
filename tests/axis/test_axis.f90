@@ -5,7 +5,7 @@ program test_axis
     use :: assertion
     implicit none
 
-    character(*), parameter :: test_name = "axis "
+    character(*), parameter :: test_name = "axis"//" "
 
     call test_get_coord_values()
     call test_set_coord_values()
